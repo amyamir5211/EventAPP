@@ -1,0 +1,19 @@
+{
+  "layout": {
+    "outerBorderInsetMobile": "12px",
+    "outerBorderInsetDesktop": "24px",
+    "innerBorderInsetMobile": "20px",
+    "innerBorderInsetDesktop": "36px",
+    "containerMaxWidth": "800px",
+    "containerWidthMobile": "calc(100% - 64px)",
+    "containerWidthDesktop": "calc(100% - 120px)",
+    "containerMarginBottom": "2rem",
+    "paddingTopMobile": "2.2rem",
+    "paddingTopDesktop": "3rem"
+  },
+  "animation": {
+    "verseFadeInDelay": "0s",
+    "cardFadeInDelay": "0.25s",
+    "animationDuration": "0.6s"
+  }
+}

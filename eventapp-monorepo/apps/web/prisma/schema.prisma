@@ -1,0 +1,157 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  phone         String?   @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  events        Event[]
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Event {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  title         String
+  hostId        String
+  host          User        @relation(fields: [hostId], references: [id])
+  eventCategory String      @default("wedding") // "wedding" | "birthday" | "corporate" | "engagement"
+  culturalTheme String?     // "punjabi" | "tamil" | "bengali" | "muslim" | "christian"
+  coverImage    String?
+  description   String?
+  hostName      String?     // Display name shown on public page (overrides auth user name)
+  welcomeMessage String?    // General welcome blurb shown above ceremonies (supports markdown)
+  isPublished   Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  subEvents     SubEvent[]
+  guests        Guest[]
+  shagunEntries ShagunEntry[]
+}
+
+
+model SubEvent {
+  id          String         @id @default(cuid())
+  eventId     String
+  event       Event          @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name        String
+  subType     String?        // "mehndi" | "haldi" | "sangeet" | "baraat" | "reception" | "ring" | "birthday_party"
+  date        DateTime
+  venue       String?
+  address     String?
+  dressCode   String?
+  description String?
+  order       Int            @default(0)
+  guestLinks  GuestSubEvent[]
+  checkIns    CheckIn[]
+}
+
+model Guest {
+  id              String         @id @default(cuid())
+  eventId         String
+  event           Event          @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name            String
+  phone           String?
+  email           String?
+  rsvpToken       String         @unique @default(cuid())
+  rsvpStatus      String         @default("PENDING") // "PENDING" | "CONFIRMED" | "DECLINED"
+  mealPreference  String?
+  travelNeeds     String?
+  expectedPersons Int?           // Host's estimate of headcount for this invite
+  actualPersons   Int?           // Guest's self-declared headcount on RSVP form
+  inviteViewedAt  DateTime?      // Timestamp of first personalized link open
+  isArchived      Boolean        @default(false) // soft-delete flag
+  archivedAt      DateTime?      // Timestamp when archived
+  createdAt       DateTime       @default(now())
+  subEventLinks   GuestSubEvent[]
+  checkIns        CheckIn[]
+  shagunEntries   ShagunEntry[]
+}
+
+model GuestSubEvent {
+  guestId    String
+  subEventId String
+  guest      Guest    @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  subEvent   SubEvent @relation(fields: [subEventId], references: [id], onDelete: Cascade)
+  isInvited  Boolean  @default(true)
+
+  @@id([guestId, subEventId])
+}
+
+model CheckIn {
+  id          String   @id @default(cuid())
+  guestId     String
+  subEventId  String
+  guest       Guest    @relation(fields: [guestId], references: [id])
+  subEvent    SubEvent @relation(fields: [subEventId], references: [id])
+  checkedInAt DateTime @default(now())
+  checkedInBy String?
+}
+
+model ShagunEntry {
+  id                String   @id @default(cuid())
+  eventId           String
+  event             Event    @relation(fields: [eventId], references: [id])
+  guestId           String?
+  guest             Guest?   @relation(fields: [guestId], references: [id])
+  guestName         String
+  amount            Int      // in paise (INR * 100)
+  currency          String   @default("INR")
+  message           String?
+  razorpayOrderId   String?  @unique
+  razorpayPaymentId String?  @unique
+  status            String   @default("PENDING") // "PENDING" | "CAPTURED" | "FAILED"
+  createdAt         DateTime @default(now())
+}
+
+model ThankYouLog {
+  id        String   @id @default(cuid())
+  guestId   String
+  eventId   String
+  channel   String   // "whatsapp" | "email"
+  sentAt    DateTime @default(now())
+  status    String   // "sent" | "failed"
+}

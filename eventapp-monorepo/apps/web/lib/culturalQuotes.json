@@ -1,0 +1,74 @@
+{
+  "muslim": {
+    "religionName": "Muslim",
+    "verse": "And among His signs is that He created for you mates from among yourselves that you may find tranquility in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought.",
+    "citation": "Surah Ar-Rum 30:21",
+    "shloka": "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
+    "motifs": ["🌙", "⭐", "🕌", "🌹", "✨"],
+    "wittyOneLiners": {
+      "mehndi": "Let's paint the town green! 🌿",
+      "haldi": "Join the haldi and paint yellove! 💛",
+      "sangeet": "Dance till the stars blush! 🎶",
+      "wedding": "Two souls, one divine promise. 💍",
+      "nikah": "Two souls, one divine promise. 💍",
+      "walima": "A grand celebration of a beautiful beginning! 🥂",
+      "reception": "A grand celebration of a beautiful beginning! 🥂"
+    }
+  },
+  "hindu": {
+    "religionName": "Hindu",
+    "verse": "Dharmecha Arthecha Kamecha Nati Charami",
+    "citation": "A sacred wedding vow from Vedic rituals, promising lifelong partnership in righteousness, prosperity, and love.",
+    "shloka": "धर्मे च अर्थे च कामे च नातिचरामि",
+    "motifs": ["🪔", "🪷", "🕉️", "🌸", "✨"],
+    "wittyOneLiners": {
+      "mehndi": "Let's paint the town green! 🌿",
+      "haldi": "Join the haldi and paint yellove! 💛",
+      "sangeet": "Dance till the stars blush! 🎶",
+      "wedding": "Two souls, one divine promise. 💍",
+      "reception": "Celebrate the union of two beautiful hearts! 🥂"
+    }
+  },
+  "christian": {
+    "religionName": "Christian",
+    "verse": "Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it keeps no record of wrongs.",
+    "citation": "1 Corinthians 13:4-7",
+    "shloka": "What God has joined together, let no one separate.",
+    "motifs": ["⛪", "🕊️", "✝️", "🌹", "✨"],
+    "wittyOneLiners": {
+      "mehndi": "Let's paint the town green! 🌿",
+      "haldi": "Join the haldi and paint yellove! 💛",
+      "sangeet": "Dance till the stars blush! 🎶",
+      "wedding": "Two souls, one divine promise. 💍",
+      "reception": "A toast to a beautiful lifetime together! 🥂"
+    }
+  },
+  "sikh": {
+    "religionName": "Sikh",
+    "verse": "They are not said to be husband and wife, who merely sit together. Rather they alone are called husband and wife, who have one soul in two bodies.",
+    "citation": "Sri Guru Granth Sahib, Ang 788",
+    "shloka": "ਧਨ ਪਿਰੁ ਏਹਿ ਨ ਆਖੀਅਨਿ ਬਹਨਿ ਇਕਠੇ ਹੋਇ ॥ ਏਕ ਜੋਤਿ ਦੁਇ ਮੂਰਤੀ ਧਨ ਪਿਰੁ ਕਹੀਐ ਸੋਇ ॥",
+    "motifs": ["🌾", "☬", "⚔️", "🌸", "✨"],
+    "wittyOneLiners": {
+      "mehndi": "Let's paint the town green! 🌿",
+      "haldi": "Join the haldi and paint yellove! 💛",
+      "sangeet": "Dance till the stars blush! 🎶",
+      "wedding": "Two souls, one divine promise. 💍",
+      "reception": "Cheers to a lifetime of love and companionship! 🥂"
+    }
+  },
+  "buddhist": {
+    "religionName": "Buddhist",
+    "verse": "In whom there is truth, righteousness, non-violence, restraint, and self-control, such a wise person is indeed free from impurities.",
+    "citation": "Dhammapada v. 261",
+    "shloka": "May all beings live in harmony, compassion, and peace.",
+    "motifs": ["☸️", "🪷", "🌸", "🍂", "✨"],
+    "wittyOneLiners": {
+      "mehndi": "Let's paint the town green! 🌿",
+      "haldi": "Join the haldi and paint yellove! 💛",
+      "sangeet": "Dance till the stars blush! 🎶",
+      "wedding": "Two souls, one divine promise. 💍",
+      "reception": "Celebrate the journey of love and mindfulness! 🥂"
+    }
+  }
+}
